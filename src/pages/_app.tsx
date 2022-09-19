@@ -9,6 +9,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <Fragment>
       <Head>
         <meta name={'viewport'} content={'minimum-scale=1, initial-scale=1, width=device-width'} />
+        <link rel={'Shortcut icon'} href={'https://mageguildwars.pl/images/revolution/favicon.ico'} />
       </Head>
       <MantineProvider withGlobalStyles withNormalizeCSS>
         <Component {...pageProps} />
