@@ -1,0 +1,12 @@
+{
+  "panels": [
+    {
+      "id": "9a27f2ef-558b-4ac4-ae81-b3fe73bb631e",
+      "name": "Kalkulator statystyk",
+      "url": "/kalkulator",
+      "title": "Przejdź do kalkulatora kosztów PU",
+      "backgroundImage": "https://i.imgur.com/MOo87DY.png",
+      "description": "Kalkulator, za pomocą którego w łatwy sposób obliczysz koszt PU dla statystyk swojej postaci"
+    }
+  ]
+}
