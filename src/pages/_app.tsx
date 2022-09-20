@@ -11,7 +11,18 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name={'viewport'} content={'minimum-scale=1, initial-scale=1, width=device-width'} />
         <link rel={'Shortcut icon'} href={'https://mageguildwars.pl/images/revolution/favicon.ico'} />
       </Head>
-      <MantineProvider withGlobalStyles withNormalizeCSS>
+      <MantineProvider
+        theme={{
+          fontFamily: 'Poppins, sans-serif',
+          headings: { fontFamily: 'Merriweather, serif' },
+          colors: {
+            mgw: ['#301e38', '#301e38', '#301e38', '#301e38', '#301e38', '#301e38', '#301e38', '#301e38', '#301e38', '#301e38'],
+          },
+          primaryColor: 'mgw',
+        }}
+        withGlobalStyles
+        withNormalizeCSS
+      >
         <Component {...pageProps} />
       </MantineProvider>
     </Fragment>
