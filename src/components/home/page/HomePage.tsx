@@ -19,7 +19,7 @@ function HomePage() {
 
   return (
     <main className={clsx(classes.body, 'min-h-screen h-full')}>
-      <div className={'container mx-auto'}>
+      <div className={'container max-w-[1080px] mx-auto'}>
         <div className={clsx(classes.wrapper, 'min-h-screen h-full')}>
           <Header />
           <Content>{isLoading ? <DataLoader /> : <HomeNavGrid data={data} />}</Content>
