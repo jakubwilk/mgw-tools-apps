@@ -13,8 +13,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <MantineProvider
         theme={{
-          fontFamily: 'Poppins, sans-serif',
-          headings: { fontFamily: 'Merriweather, serif' },
           colors: {
             mgw: ['#301e38', '#301e38', '#301e38', '#301e38', '#301e38', '#301e38', '#301e38', '#301e38', '#301e38', '#301e38'],
           },

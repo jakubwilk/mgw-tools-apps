@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Merriweather', serif !important;
+}
+
+*::selection {
+    color: #f4f4f4;
+    background-color: #301e38;
+}
+
+*::-webkit-scrollbar {
+    width: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #a598aa;
+    border-radius: 0;
+    border: none;
+}
+
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
