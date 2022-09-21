@@ -1,9 +1,19 @@
 {
   "panels": [
     {
+      "id": "280cc82f-7784-43f6-bfd2-dfde739c82e6",
+      "name": "Mapa świata",
+      "url": "#",
+      "isDisabled": true,
+      "title": "Przejdź do mapy świata MGW",
+      "backgroundImage": "https://i.imgur.com/3XVtJXy.png",
+      "description": "Dedykowana mapa świata z podziałem na królestwa, ziemie opanowane przez smoki oraz ważniejsze miasta i wioski razem ze szlakami"
+    },
+    {
       "id": "9a27f2ef-558b-4ac4-ae81-b3fe73bb631e",
       "name": "Kalkulator statystyk",
       "url": "/kalkulator",
+      "isDisabled": false,
       "title": "Przejdź do kalkulatora kosztów PU",
       "backgroundImage": "https://i.imgur.com/MOo87DY.png",
       "description": "Kalkulator, za pomocą którego w łatwy sposób obliczysz koszt PU dla statystyk swojej postaci"
