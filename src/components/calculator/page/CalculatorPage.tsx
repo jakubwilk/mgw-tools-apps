@@ -1,6 +1,7 @@
 import Layout from '../../common/ui/Layout'
 import Link from 'next/link'
 import { Button, clsx, createStyles, Tooltip } from '@mantine/core'
+import { SingleCalculator } from '../ui'
 
 const useStyles = createStyles((theme) => ({
   link: {
@@ -20,7 +21,14 @@ function CalculatorPage() {
   return (
     <Layout>
       <div className={clsx('h-full', 'flex flex-col justify-between items-center')}>
-        <p>{'Kalkulator'}</p>
+        <p>{'W przypadku braku podania liczb, domyślną wartością będzie cyfra 1'}</p>
+        <SingleCalculator
+          startValue={{ label: 'Wartość początkowa', placeholder: 'Podaj początkową wartość Twojej siły' }}
+          endValue={{
+            label: 'Wartość końcowa',
+            placeholder: 'Podaj końcową wartość Twojej siły, którą chcesz zyskać',
+          }}
+        />
         <Link href={'/'} passHref>
           <Tooltip label={'Powrót do strony głównej'} withArrow>
             <Button component={'a'} className={clsx(classes.link, 'px-4 py-2')}>
