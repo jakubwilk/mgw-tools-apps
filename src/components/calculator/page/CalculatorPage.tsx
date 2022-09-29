@@ -4,12 +4,12 @@ import { Button, clsx, createStyles, Tooltip } from '@mantine/core'
 
 const useStyles = createStyles((theme) => ({
   link: {
-    color: theme.colors.mgw[9],
+    color: 'white',
     transition: 'all .1s ease-in-out',
 
     '&:hover, &:focus': {
-      color: 'white',
-      backgroundColor: theme.colors.mgw,
+      color: theme.colors.mgw[9],
+      backgroundColor: 'transparent',
     },
   },
 }))
