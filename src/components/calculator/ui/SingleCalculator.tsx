@@ -1,27 +1,25 @@
-import { Fragment, useCallback, useEffect, useState } from 'react'
-import { NumberInput } from '@mantine/core'
+import { useCallback, useEffect, useState } from 'react'
+import { clsx, createStyles, Divider, NumberInput, Paper } from '@mantine/core'
+import { ISingleCalculatorValues } from '../models'
 
 interface IProps {
-  startValue: {
-    label: string
-    placeholder: string
-  }
-  endValue: {
-    label: string
-    placeholder: string
-  }
+  title: string
+  startValue: ISingleCalculatorValues
+  endValue: ISingleCalculatorValues
 }
 
-function SingleCalculator({ startValue, endValue }: IProps) {
+const useStyles = createStyles(() => ({
+  title: {
+    color: '#583270',
+  },
+}))
+
+function SingleCalculator({ title, startValue, endValue }: IProps) {
+  const { classes } = useStyles()
   const [cost, setCost] = useState(0)
   const [startVal, setStartValue] = useState(0)
   const [endVal, setEndValue] = useState(0)
 
-  // 1-50 -> 1PU
-  // 51-100 -> 2PU
-  // 101-150 -> 3PU
-  // 151-200 -> 4PU
-  // 201 >= -> 5PU
   const handleStartChange = useCallback((value: number | undefined) => {
     setStartValue(value ?? 0)
   }, [])
@@ -31,24 +29,24 @@ function SingleCalculator({ startValue, endValue }: IProps) {
   }, [])
 
   useEffect(() => {
-    let difference = endVal - startVal
+    let current = Number(startVal)
+    let difference = Number(endVal) - current
     let points = 0
 
-    if (difference <= 50) {
-      points = difference
-      difference = difference - points
-    } else if (difference <= 100) {
-      points = difference * 2
-      difference = difference - points / 2
-    } else if (difference <= 150) {
-      points = difference * 3
-      difference = difference - points / 3
-    } else if (difference <= 200) {
-      points = difference * 4
-      difference = difference - points / 4
-    } else {
-      points = difference * 5
-      difference = difference - points / 5
+    for (let i = 0; i < difference; i++) {
+      if (current < 50) {
+        points += 1
+      } else if (current < 100) {
+        points += 2
+      } else if (current < 150) {
+        points += 3
+      } else if (current < 200) {
+        points += 4
+      } else {
+        points += 5
+      }
+
+      current++
     }
 
     setCost(points)
@@ -57,24 +55,29 @@ function SingleCalculator({ startValue, endValue }: IProps) {
   console.log('cost', cost)
 
   return (
-    <Fragment>
+    <Paper shadow={'xs'} p={'xl'} className={'h-full'} withBorder>
+      <h3 className={clsx(classes.title, 'mt-0', 'text-center')}>{title}</h3>
       <NumberInput
         placeholder={startValue.placeholder}
         label={startValue.label}
+        description={`Podaj początkową wartość Twojej ${startValue.name.toLowerCase()}`}
         size={'md'}
         onChange={handleStartChange}
+        className={'mb-4'}
         withAsterisk
         hideControls
       />
+      <Divider my={'sm'} variant={'dashed'} />
       <NumberInput
         placeholder={endValue.placeholder}
         label={endValue.label}
+        description={`Podaj końcową wartość statystyki ${endValue.name.toLowerCase()}, którą chcesz zyskać`}
         size={'md'}
         onChange={handleEndChange}
         withAsterisk
         hideControls
       />
-    </Fragment>
+    </Paper>
   )
 }
 
