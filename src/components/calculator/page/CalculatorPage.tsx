@@ -3,7 +3,6 @@ import Link from 'next/link'
 import { Button, clsx, createStyles, Grid, Tooltip } from '@mantine/core'
 import { SingleCalculator } from '../ui'
 import { useCalculatorItemsDefinition } from '../hooks'
-import { useMemo, useState } from 'react'
 
 const useStyles = createStyles((theme) => ({
   headerTitle: {
