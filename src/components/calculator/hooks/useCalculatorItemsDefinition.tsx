@@ -1,6 +1,16 @@
 import { ISingleCalculatorSchema } from '../models'
+import { useMemo, useState } from 'react'
 
 function useCalculatorItemsDefinition() {
+  const [str, setStr] = useState(0)
+  const [dex, setDex] = useState(0)
+  const [spd, setSpd] = useState(0)
+  const [agi, setAgi] = useState(0)
+  const [will, setWill] = useState(0)
+  const [force, setForce] = useState(0)
+
+  const cost = useMemo(() => str + dex + spd + agi + will + force, [agi, dex, force, spd, str, will])
+
   const statistics: Array<ISingleCalculatorSchema> = [
     {
       title: 'Siła',
@@ -14,6 +24,7 @@ function useCalculatorItemsDefinition() {
         placeholder: 'Na przykład: 35',
         name: 'siły',
       },
+      setSingleCost: setStr,
     },
     {
       title: 'Wytrzymałość',
@@ -27,6 +38,7 @@ function useCalculatorItemsDefinition() {
         placeholder: 'Na przykład: 50',
         name: 'wytrzymałości',
       },
+      setSingleCost: setDex,
     },
     {
       title: 'Szybkość',
@@ -40,6 +52,7 @@ function useCalculatorItemsDefinition() {
         placeholder: 'Na przykład: 120',
         name: 'szybkości',
       },
+      setSingleCost: setSpd,
     },
     {
       title: 'Reakcje',
@@ -53,6 +66,7 @@ function useCalculatorItemsDefinition() {
         placeholder: 'Na przykład: 200',
         name: 'reakcji',
       },
+      setSingleCost: setAgi,
     },
     {
       title: 'Koncentracja',
@@ -66,6 +80,7 @@ function useCalculatorItemsDefinition() {
         placeholder: 'Na przykład: 125',
         name: 'koncentracja',
       },
+      setSingleCost: setWill,
     },
     {
       title: 'Kontrola energii magicznej',
@@ -79,10 +94,11 @@ function useCalculatorItemsDefinition() {
         placeholder: 'Na przykład: 300',
         name: 'kontrola energii magicznej',
       },
+      setSingleCost: setForce,
     },
   ]
 
-  return { statistics }
+  return { cost, statistics }
 }
 
 export default useCalculatorItemsDefinition
