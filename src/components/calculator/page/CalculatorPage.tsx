@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { Button, clsx, createStyles, Grid, Tooltip } from '@mantine/core'
 import { SingleCalculator } from '../ui'
 import { useCalculatorItemsDefinition } from '../hooks'
+import { useMemo, useState } from 'react'
 
 const useStyles = createStyles((theme) => ({
   headerTitle: {
@@ -26,7 +27,9 @@ const useStyles = createStyles((theme) => ({
 
 function CalculatorPage() {
   const { classes } = useStyles()
-  const { statistics } = useCalculatorItemsDefinition()
+  const { cost, statistics } = useCalculatorItemsDefinition()
+
+  console.log('cost', cost)
 
   return (
     <Layout>
@@ -37,7 +40,7 @@ function CalculatorPage() {
             <p className={classes.headerText}>{'W przypadku braku podania liczb, domyślną wartością będzie cyfra 1'}</p>
           </header>
           <Grid gutter={'xl'}>
-            {statistics.map(({ title, startValue, endValue }) => (
+            {statistics.map(({ title, startValue, endValue, setSingleCost }) => (
               <Grid.Col key={title} md={6} lg={4}>
                 <SingleCalculator
                   title={title}
@@ -51,10 +54,15 @@ function CalculatorPage() {
                     placeholder: endValue.placeholder,
                     name: endValue.name,
                   }}
+                  setSingleCost={setSingleCost}
                 />
               </Grid.Col>
             ))}
           </Grid>
+          <p>
+            {'Koszt PU: '}
+            {cost}
+          </p>
         </div>
         <Link href={'/'} passHref>
           <Tooltip label={'Powrót do strony głównej'} withArrow>

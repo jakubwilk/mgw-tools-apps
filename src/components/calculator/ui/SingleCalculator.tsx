@@ -6,6 +6,8 @@ interface IProps {
   title: string
   startValue: ISingleCalculatorValues
   endValue: ISingleCalculatorValues
+  // eslint-disable-next-line no-unused-vars
+  setSingleCost: (value: number) => void
 }
 
 const useStyles = createStyles(() => ({
@@ -14,18 +16,26 @@ const useStyles = createStyles(() => ({
   },
 }))
 
-function SingleCalculator({ title, startValue, endValue }: IProps) {
+function SingleCalculator({ title, startValue, endValue, setSingleCost }: IProps) {
   const { classes } = useStyles()
   const [cost, setCost] = useState(0)
   const [startVal, setStartValue] = useState(0)
   const [endVal, setEndValue] = useState(0)
 
   const handleStartChange = useCallback((value: number | undefined) => {
-    setStartValue(value ?? 0)
+    if (value && value <= 1000) {
+      setStartValue(value)
+    } else {
+      setStartValue(0)
+    }
   }, [])
 
   const handleEndChange = useCallback((value: number | undefined) => {
-    setEndValue(value ?? 0)
+    if (value && value <= 1000) {
+      setEndValue(value)
+    } else {
+      setEndValue(0)
+    }
   }, [])
 
   useEffect(() => {
@@ -52,7 +62,10 @@ function SingleCalculator({ title, startValue, endValue }: IProps) {
     setCost(points)
   }, [startVal, endVal])
 
-  console.log('cost', cost)
+  useEffect(() => {
+    setSingleCost(cost)
+    /* eslint-disable react-hooks/exhaustive-deps */
+  }, [cost])
 
   return (
     <Paper shadow={'xs'} p={'xl'} className={'h-full'} withBorder>
@@ -64,6 +77,7 @@ function SingleCalculator({ title, startValue, endValue }: IProps) {
         size={'md'}
         onChange={handleStartChange}
         className={'mb-4'}
+        max={1000}
         withAsterisk
         hideControls
       />
@@ -74,6 +88,7 @@ function SingleCalculator({ title, startValue, endValue }: IProps) {
         description={`Podaj końcową wartość statystyki ${endValue.name.toLowerCase()}, którą chcesz zyskać`}
         size={'md'}
         onChange={handleEndChange}
+        max={1000}
         withAsterisk
         hideControls
       />
