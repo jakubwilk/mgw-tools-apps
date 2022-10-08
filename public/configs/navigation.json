@@ -3,8 +3,8 @@
     {
       "id": "280cc82f-7784-43f6-bfd2-dfde739c82e6",
       "name": "Mapa świata",
-      "url": "#",
-      "isDisabled": true,
+      "url": "/mapa",
+      "isDisabled": false,
       "title": "Przejdź do mapy świata MGW",
       "backgroundImage": "https://i.imgur.com/3XVtJXy.png",
       "description": "Dedykowana mapa świata z podziałem na królestwa, ziemie opanowane przez smoki oraz ważniejsze miasta i wioski razem ze szlakami"
