@@ -13,6 +13,15 @@ const useStyles = createStyles((theme) => ({
     fontSize: '1rem',
     lineHeight: '24px',
   },
+  cost: {
+    fontSize: '2rem',
+
+    '& > span': {
+      color: '#583270',
+      fontFamily: 'Poppins, sans-serif',
+      fontWeight: 400,
+    },
+  },
   link: {
     color: 'white',
     transition: 'all .1s ease-in-out',
@@ -27,8 +36,6 @@ const useStyles = createStyles((theme) => ({
 function CalculatorPage() {
   const { classes } = useStyles()
   const { cost, statistics } = useCalculatorItemsDefinition()
-
-  console.log('cost', cost)
 
   return (
     <Layout>
@@ -58,10 +65,12 @@ function CalculatorPage() {
               </Grid.Col>
             ))}
           </Grid>
-          <p>
-            {'Koszt PU: '}
-            {cost}
-          </p>
+          <div>
+            <h3 className={clsx(classes.cost)}>
+              {'Koszt PU: '}
+              <span>{cost}</span>
+            </h3>
+          </div>
         </div>
         <Link href={'/'} passHref>
           <Tooltip label={'Powrót do strony głównej'} withArrow>
